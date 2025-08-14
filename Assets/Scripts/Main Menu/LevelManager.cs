@@ -32,7 +32,7 @@ public class LevelManager : MonoBehaviour {
 
     IEnumerator PlayerDies()
     {
-        if (playerMove == null && Application.loadedLevelName == "Level_1")
+        if (playerMove == null && SceneManager.GetActiveScene().name == "Level_1")
         { 
             print("Player is dead, load requested");
             yield return new WaitForSeconds(1);
@@ -40,10 +40,14 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
-    public void LoadLevel(string name) {
+    public void LoadLevel(string name) 
+    {
+        if (isPaused)
+        {
+            Pause();
+        }
         Debug.Log("Level Load Requested For: " + name);
-        SceneManager.UnloadSceneAsync(Application.loadedLevel);
-        SceneManager.LoadScene(name);
+        SceneManager.LoadScene(name, LoadSceneMode.Single);
     }
 
 	public void QuitRequest(){
@@ -51,8 +55,12 @@ public class LevelManager : MonoBehaviour {
 		Application.Quit ();
 	}
 	//Load Next Level using Build Settings
-	public void LoadNextLevel(){
-		SceneManager.LoadScene(Application.loadedLevel +1);
-        SceneManager.UnloadSceneAsync(Application.loadedLevel);
+	public void LoadNextLevel()
+    {
+        if (isPaused)
+        {
+            Pause();
+        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
 	}
 }
