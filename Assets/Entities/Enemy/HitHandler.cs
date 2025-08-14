@@ -70,7 +70,7 @@ public class HitHandler : MonoBehaviour {
             {
                 EnemyLaser = Instantiate(EnemyLaser, transform.position, Quaternion.identity) as GameObject;
                 EnemyLaser.transform.localScale = EnemyLaser.transform.localScale * laserMod;
-                EnemyLaser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -enemyProjectileSpeed);
+                EnemyLaser.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -enemyProjectileSpeed);
                 enemyLaserTimer = 1;
             }
         }

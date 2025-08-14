@@ -95,7 +95,7 @@ public class PlayerMove : MonoBehaviour {
         if (Input.GetButtonDown("Fire1") && waitForNextShot <= 0)
         {
             GameObject Projectile = Instantiate(Laser, new Vector2(transform.position.x, transform.position.y + 1f), Quaternion.identity) as GameObject;
-            Projectile.GetComponent<Rigidbody2D>().velocity = new Vector3(0, projectileSpeed);
+            Projectile.GetComponent<Rigidbody2D>().linearVelocity = new Vector3(0, projectileSpeed);
             waitForNextShot = 1;
             laser.Play();
         }
@@ -162,7 +162,7 @@ public class PlayerMove : MonoBehaviour {
         waiting = true;
         yield return new WaitForSeconds(fireRate);
         GameObject Projectile = Instantiate(Laser, new Vector2(transform.position.x, transform.position.y + 1f), Quaternion.identity) as GameObject;
-        Projectile.GetComponent<Rigidbody2D>().velocity = new Vector3(0, projectileSpeed);
+        Projectile.GetComponent<Rigidbody2D>().linearVelocity = new Vector3(0, projectileSpeed);
         laser.Play();
         waiting = false;
     }

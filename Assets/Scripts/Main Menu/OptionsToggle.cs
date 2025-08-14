@@ -45,6 +45,7 @@ public class OptionsToggle : MonoBehaviour {
         toOptions = true;
         toMain = false;
         speed = 20f;
+        StartTime = Time.time;
         TotalDistance = Vector3.Distance(startPosition.position, target.position) / speed;
     }
     public void toMainMenu(){
@@ -56,6 +57,7 @@ public class OptionsToggle : MonoBehaviour {
         toMain = true;
         toOptions = false;
         speed = 20f;
+        StartTime = Time.time;
         TotalDistance = Vector3.Distance(startPosition.position, origin.position) / speed;
     }
     public void toHighScore()
@@ -74,6 +76,7 @@ public class OptionsToggle : MonoBehaviour {
             toOptions = true;
             toMain = false;
             speed = 20f;
+            StartTime = Time.time;
             TotalDistance = Vector3.Distance(startPosition.position, target.position) / speed;
         }
     }

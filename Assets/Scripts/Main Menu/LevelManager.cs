@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour {
     private void Start()
     {
         playerMove = GameObject.Find("Player");
-        pauseLabel = GameObject.Find("PausedImageBG");
+        pauseLabel = GameObject.Find("PauseUI");
         if(pauseLabel)
             pauseLabel.SetActive(isPaused);
     }
