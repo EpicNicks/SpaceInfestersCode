@@ -37,11 +37,6 @@ public class HitHandler : MonoBehaviour {
     {
         Fire();
     }
-    void OnDestroy()
-    {
-        Vector3 curPos = transform.position;
-        AudioSource.PlayClipAtPoint(destroyed, curPos);
-    }
     void LoadSprites()
     {
         int SpriteIndex = hp - 1;
@@ -56,6 +51,8 @@ public class HitHandler : MonoBehaviour {
             case 0: scoreKeeper.Score(pointValue);
                 EnemySpawnManager.totalPoints += pointValue;
                 EnemySpawnManager.childAmount--;
+                Vector3 curPos = transform.position;
+                AudioSource.PlayClipAtPoint(destroyed, curPos);
                 Destroy(ship);
                 break;
             default: break;
